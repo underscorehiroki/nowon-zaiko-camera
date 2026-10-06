@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#121512">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>NOW ON 在庫</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <p class="brand">NOW ON</p>
+      <p class="brand-sub">在庫</p>
+    </div>
+    <p id="count" class="count"></p>
+  </header>
+
+  <section id="scan" class="pane">
+    <div class="modes" role="tablist">
+      <button type="button" id="modeIn" class="mode on-in">入庫</button>
+      <button type="button" id="modeOut" class="mode">出庫</button>
+    </div>
+    <div class="finder">
+      <div id="reader"></div>
+      <div class="frame" aria-hidden="true"></div>
+    </div>
+    <p id="scanHint" class="hint">下のボタンを押すと、カメラが開きます</p>
+    <button type="button" id="openCam" class="solid cam-start">バーコードを読む</button>
+    <div class="scan-tools">
+      <label class="check"><input id="continuous" type="checkbox"> 連続で1本ずつ</label>
+      <button type="button" id="manual" class="ghost">番号を打つ</button>
+    </div>
+    <div id="last" class="last"></div>
+  </section>
+
+  <section id="stock" class="pane" hidden>
+    <div class="stock-head">
+      <input id="q" type="search" placeholder="名前・色・JAN" enterkeyhint="search">
+      <button type="button" id="add" class="solid">追加</button>
+    </div>
+    <p id="catalogNote" class="note"></p>
+    <div id="filters" class="filters"></div>
+    <div id="list" class="list"></div>
+  </section>
+
+  <section id="log" class="pane" hidden>
+    <div class="log-head">
+      <h2>履歴</h2>
+      <button type="button" id="undo" class="ghost">直前を取り消す</button>
+    </div>
+    <div id="moves" class="list"></div>
+  </section>
+
+  <nav>
+    <button type="button" data-tab="scan" class="on">読む</button>
+    <button type="button" data-tab="stock">在庫</button>
+    <button type="button" data-tab="log">履歴</button>
+  </nav>
+</div>
+
+<div id="sheet" class="sheet" hidden></div>
+<div id="toast" class="toast" hidden></div>
+<script src="vendor/html5-qrcode.min.js"></script>
+<script>window.NOWON_API="https://script.google.com/macros/s/AKfycbwzAYtQZm4teYVjjUmrtqet5Aqeun8-yGhItasQ7OZ0BjTK4qp3S3GEWsDlzcw4SAGI/exec";</script>
+<script src="app.js"></script>
+</body>
+</html>
